@@ -24,13 +24,29 @@ class Boy:
 
 class Ball:
     def __init__(self):
-        pass
+        self.x, self.y = random.randint(30, 770), 600
+        self.speed = random.randint(4, 12)
+        self.ball_size = random.randint(0, 1)
+
+        if (self.ball_size == 1):
+            self.image = load_image('ball21x21.png')
+        if (self.ball_size == 0):
+            self.image = load_image('ball41x41.png')
 
     def update(self):
-        pass
+        if (self.ball_size == 1):
+            if (self.y <= 60):
+                self.y = 60
+            else:
+                self.y -= self.speed
+        else:
+            if (self.y <= 70):
+                self.y = 70
+            else:
+                self.y -= self.speed
 
     def draw(self):
-        pass
+        self.image.draw(self.x, self.y)
 
 def handle_events():
     global running
